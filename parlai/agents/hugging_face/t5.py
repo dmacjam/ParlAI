@@ -193,7 +193,7 @@ class T5Agent(TorchGeneratorAgent):
         }
 
         if self.opt['t5_generation_config']:
-            config = TASK_CONFIGS[self.opt['t5_generation_config']]
+            config = copy.deepcopy(TASK_CONFIGS[self.opt['t5_generation_config']])
             config.pop('prefix', None)
             generation_params.update(config)
         if overrides:
